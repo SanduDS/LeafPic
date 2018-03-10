@@ -669,7 +669,7 @@ public class RvMediaFragment extends BaseFragment implements MediaAdapter.MediaA
 
     @Override
     public void onMediaSelected(int position) {
-        if (listener != null) listener.onMediaClick(RvMediaFragment.this.album, adapter.getMedia(), position);
+        if (listener != null) listener.onMediaClick(album, adapter.getMedia(), position);
     }
 
     @Override

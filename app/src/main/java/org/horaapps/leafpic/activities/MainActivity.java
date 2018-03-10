@@ -168,21 +168,8 @@ public class MainActivity extends SharedMediaActivity implements
     @Override
     public void onMediaClick(Album album, ArrayList<Media> media, int position) {
 
-        if (!pickMode) {
-            Intent intent = new Intent(getApplicationContext(), SingleMediaActivity.class);
-            intent.putExtra("album", album);
-            try {
-                intent.setAction(SingleMediaActivity.ACTION_OPEN_ALBUM);
-                intent.putExtra("media", media);
-                intent.putExtra("position", position);
-                startActivity(intent);
-            } catch (Exception e) {
-                intent.setAction(SingleMediaActivity.ACTION_OPEN_ALBUM_LAZY);
-                intent.putExtra("media", media.get(position));
-                startActivity(intent);
-            }
-
-        } else {
+        if (!pickMode) SingleMediaActivity.startActivity(this, album, media, position);
+        else {
 
             Media m = media.get(position);
             Uri uri = LegacyCompatFileProvider.getUri(getApplicationContext(), m.getFile());
